@@ -7,8 +7,8 @@ class BaiduSearchResultsPage(BasePage):
     """搜索结果页的元素和操作"""
 
     # 元素定位器
-    RESULT_ITEMS = (By.CSS_SELECTOR, "div.result")
-    RESULT_LINKS = (By.CSS_SELECTOR, "div.result h3 a")
+    RESULT_ITEMS = (By.CSS_SELECTOR, "div.result, .result")
+    RESULT_LINKS = (By.CSS_SELECTOR, "div.result h3 a, .result h3 a, h3.t a")
     SEARCH_INPUT = (By.ID, "kw")
     SEARCH_BUTTON = (By.ID, "su")
     PAGE_NAV = (By.CSS_SELECTOR, "div#page")

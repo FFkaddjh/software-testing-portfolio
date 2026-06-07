@@ -21,8 +21,10 @@ def create_driver(browser: str = "chrome", headless: bool = True):
         options.add_argument("--no-sandbox")
         options.add_argument("--disable-dev-shm-usage")
         options.add_argument("--lang=zh-CN")
-        # 禁用自动化提示和弹窗
-        options.add_experimental_option("excludeSwitches", ["enable-automation"])
+        options.add_argument('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36')
+        # 反检测配置
+        options.add_argument("--disable-blink-features=AutomationControlled")
+        options.add_experimental_option("excludeSwitches", ["enable-automation", "enable-logging"])
         options.add_experimental_option("useAutomationExtension", False)
         service = ChromeService(ChromeDriverManager().install())
         driver = webdriver.Chrome(service=service, options=options)
@@ -37,6 +39,14 @@ def create_driver(browser: str = "chrome", headless: bool = True):
     else:
         raise ValueError(f"不支持的浏览器: {browser}")
 
+    # 绕过 navigator.webdriver 检测
+    driver.execute_cdp_cmd("Page.addScriptToEvaluateOnNewDocument", {
+        "source": """
+            Object.defineProperty(navigator, 'webdriver', {
+                get: () => undefined
+            });
+        """
+    })
     driver.implicitly_wait(5)
     driver.set_page_load_timeout(30)
     return driver
