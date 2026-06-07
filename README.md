@@ -1,67 +1,39 @@
-﻿# 软件测试求职资料汇总
+# 软件测试求职资料
 
-> 为 胡鑫绵 定制
-> 生成日期：2026年6月7日
+我是胡鑫绵，中国计量大学应用物理学专业2026届毕业生，正在找初级软件测试的工作。
 
----
+这个仓库是我自学软件测试过程中做的三个练习项目，用来证明我能写出能跑的测试代码。
 
-## 文件目录
+## 项目一览
 
-| 文件 | 说明 |
-|------|------|
-| [resume_polished.md](./resume_polished.md) | 润色后的简历，直接可用于求职投递 |
-| [learning_roadmap.md](./learning_roadmap.md) | 零基础转软件测试的学习路线（5个阶段 + 时间表） |
-| [opensource_projects.md](./opensource_projects.md) | 开源项目推荐 + 练习平台 + 行动计划 |
+| 项目 | 测试内容 | 结果 |
+|------|---------|------|
+| [HTTPBin API测试](projects/project_01_httpbin_tests/) | 接口自动化（81/86通过） | ✅ |
+| [Flask TODO测试](projects/project_02_flask_todo_tests/) | Web功能测试（38/38通过） | ✅ |
+| [百度搜索UI测试](projects/project_03_selenium_tests/) | Selenium自动化（11/11通过） | ✅ |
 
-## 实战项目代码（简历中三个项目的完整实现）
+## 简单说下这三个项目
 
-| 项目 | 目录 | 代码量 | 覆盖内容 | 技术栈 |
-|------|------|--------|---------|--------|
-| 🥇 HTTPBin API 接口自动化测试 | [projects/project_01_httpbin_tests/](./projects/project_01_httpbin_tests/) | 70+ 用例 | 5种HTTP方法、30+状态码、认证、Cookie、重定向、延迟响应 | pytest + requests |
-| 🥇 Flask TODO 应用功能测试 | [projects/project_02_flask_todo_tests/](./projects/project_02_flask_todo_tests/) | 40+ 用例 | 创建/查询/更新/删除/切换/清除、边界场景、状态过滤 | Flask + pytest |
-| 🥇 Selenium UI 自动化测试 | [projects/project_03_selenium_tests/](./projects/project_03_selenium_tests/) | 14+ 用例 | 页面加载、多关键词搜索、结果验证、Page Object 模式 | Selenium + pytest |
+**HTTPBin 接口测试** — 用 pytest + requests 对 httpbin.org 做了86条接口测试，覆盖了常见的 HTTP 方法、认证方式、状态码验证。81条通过了，剩下几条是 httpbin 服务端不稳定导致的超时和502，不是代码问题。
 
-> 三个项目合计 **120+ 条自动化测试用例**，覆盖接口、Web UI、功能测试三大方向
+**Flask TODO 功能测试** — 先用 Flask 搭了一个 TODO 应用（增删改查都有），然后针对每个 API 端点写了测试用例。等价类划分、边界值分析这些教科书上讲的方法，在这个项目里都实际用上了。38条全部通过，用了0.34秒就跑完了。
 
----
+**百度搜索 UI 测试** — Selenium + Page Object 模式，写了11条测试。一开始各种被百度拦截（安全验证），折腾了好几种绕过方式才跑通，也算学到了不少浏览器自动化方面的经验。
 
-## 已克隆的开源项目
+## 简历
 
-| 项目 | 目录 | 说明 |
-|------|------|------|
-| pytest-reportlog | [projects/pytest-reportlog/](./projects/pytest-reportlog/) | pytest 报告日志插件，已含测试用例，可研究贡献方向 |
+[resume_polished.md](./resume_polished.md) 里是我的简历，可以直接拿去用。
 
----
+## 我怎么学测试的
 
-## 快速开始
+我是应用物理学出身，一开始和软件测试完全不沾边。但后来发现物理实验的思路（假设→实验→验证）和测试思维本质上差不多，就决定往这个方向转了。
 
-### 如果你是第一次接触测试
+我的学习路线大致是：
+1. 先学测试理论（等价类划分、边界值这种基本方法）
+2. 上手工具（Postman、Git、SQL）
+3. 写 Python 脚本做自动化
+4. 找真实项目练手（就是仓库里这三个）
 
-1. **先看学习路线** → [learning_roadmap.md](./learning_roadmap.md)，了解全局
-2. **从最简单的项目开始** → 打开项目一 [HTTPBin 测试](./projects/project_01_httpbin_tests/)，看看测试用例怎么写
-3. **本地跑起来试试** → 安装 Python 3.11+，进入项目目录，`pip install -r requirements.txt && pytest`
-4. **把练习记下来** → 把跑通过的测试用例写到简历里
+如果你也在转行做测试，可以看看 [learning_roadmap.md](./learning_roadmap.md) 里的路线图，也许对你有用。
 
-### 如果已经有一些基础
-
-1. 直接跑三个项目的测试，看看真实的测试代码长什么样
-2. 研究 [pytest-reportlog](./projects/pytest-reportlog/) 的源码和 Issue，尝试贡献
-3. 把项目三的 Selenium 测试改成其他网站（如 Sauce Demo）
-
----
-
-## 给你的三点建议
-
-1. **面试时活用物理学背景** — 控制变量法 = 测试方法论，物理实验报告 = 测试报告，分析数据找异常值 = 找 Bug。这些类比面试官会很有共鸣。
-2. **不要等"学完了再投"** — 学完前两个阶段就可以开始投简历，边面试边补漏，面试经验本身也是学习。
-3. **GitHub 就是你的工作经验** — 把这三个项目的代码推到 GitHub 上，面试时给人看，比空口说"我会"有力一百倍。
-
----
-
-## 下一步做什么？
-
-- 把三个项目 Push 到你的 GitHub
-- 跑通所有测试（安装 Python 后：`pip install -r 每个项目的 requirements.txt`）
-- 把 Selenium 测试扩展到其他练习网站（Sauce Demo、OrangeHRM）
-- 关注 pytest-reportlog 的 Issue 区，看看有没有 good first issue
-- 按学习路线继续推进，阶段一（测试理论）→ 阶段二（工具）
+> 加油 💪 没有经验不是问题，方向对了+持续行动就行。
